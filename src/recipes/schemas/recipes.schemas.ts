@@ -1,4 +1,4 @@
-import { SchemaFactory, Schema, Prop } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
 export type RecipeDocument = HydratedDocument<Recipe>;
@@ -22,6 +22,9 @@ export class Recipe {
 
   @Prop({ type: String, enum: RecipeDifficultyEnum })
   difficulty: any;
+
+  @Prop({ type: Number, index: true })
+  cookingTime: number;
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);
